@@ -4,8 +4,14 @@
   "description": "API que retorna dados de um boleto a partir do código de barras fornecido.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "F. Davi Camilo Ribeiro",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {}
 }
