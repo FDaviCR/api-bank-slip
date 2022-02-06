@@ -6,6 +6,9 @@ module.exports = {
 
     },
     getVencimento(){
-        
+
+    },
+    getCodigoDeBarras(value){
+        return titulo.getCodigoDeBarras(value);
     }
 }
