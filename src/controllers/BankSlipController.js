@@ -14,12 +14,13 @@ module.exports = {
         const linhaDigitavel = request.params.linhaDigitavel;
         
         const codigoBarras = util.getCodigoDeBarras(linhaDigitavel);
-        console.log(codigoBarras);
+        const valor = util.getValor(codigoBarras);
+        const vencimento = util.getVencimento(codigoBarras);
 
         response.status(200).send({
             barCode: codigoBarras,
-            amount: '',
-            expirationDate:''
+            amount: valor,
+            expirationDate: vencimento
         })
     }
 };

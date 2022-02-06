@@ -2,13 +2,25 @@ const convenio = require('./convenioUtil');
 const titulo = require('./tituloUtil');
 
 module.exports = {
-    getValor(){
+    getValor(value){
+        if(parseInt(value[0]) === 8){
 
+        }else{
+            return titulo.getValor(value);
+        }
     },
-    getVencimento(){
+    getVencimento(value){
+        if(parseInt(value[0]) === 8){
 
+        }else{
+            return titulo.getVencimento(value);
+        }
     },
     getCodigoDeBarras(value){
-        return titulo.getCodigoDeBarras(value);
+        if(parseInt(value[0]) === 8){
+
+        }else{
+            return titulo.getCodigoDeBarras(value);
+        }
     }
 }
