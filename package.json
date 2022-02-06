@@ -1,5 +1,5 @@
 {
-  "name": "api-ticket-data",
+  "name": "api-bank-slip",
   "version": "1.0.0",
   "description": "API que retorna dados de um boleto a partir do código de barras fornecido.",
   "main": "index.js",
