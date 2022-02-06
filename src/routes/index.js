@@ -1,14 +1,14 @@
-const { Router } = require("express");
-//const BoletoController = require('./controllers/BoletoController');
+const { Router } = require('express');
+const BankSlipController = require('../controllers/BankSlipController');
 const routes = Router();
 
-routes.get("/", (request, response) => {
+routes.get('/', (request, response) => {
   response.status(200).send({
-    title: "EWally Test",
-    version: "0.0.0"
+    title: "Teste EWally",
+    version: "0.0.1"
   });
 });
 
-//routes.post('/boleto', BoletoController.store);
+routes.get('/boleto/:linhaDigitavel', BankSlipController.linhaDigitavel);
 
 module.exports = routes;
