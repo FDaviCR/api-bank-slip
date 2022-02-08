@@ -1,5 +1,5 @@
 const functions = require('../functions');
-const util = require('../utils');
+const utils = require('../utils');
 
 module.exports = {
     async retornoBoleto(request, response){
@@ -13,9 +13,9 @@ module.exports = {
     async linhaDigitavel(request, response){
         const linhaDigitavel = request.params.linhaDigitavel;
         
-        const codigoBarras = util.getCodigoDeBarras(linhaDigitavel);
-        const valor = util.getValor(codigoBarras);
-        const vencimento = util.getVencimento(codigoBarras);
+        const codigoBarras = functions.getCodigoDeBarras(linhaDigitavel);
+        const valor = functions.getValor(linhaDigitavel);
+        const vencimento = functions.getVencimento(linhaDigitavel);
 
         response.status(200).send({
             barCode: codigoBarras,

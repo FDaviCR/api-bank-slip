@@ -1,17 +1,26 @@
+const convenio = require('./convenioFunctions');
+const titulo = require('./tituloFunctions');
+
 module.exports = {
-
-    checarDigitos(value) {
-
+    getValor(value){
+        if(parseInt(value[0]) === 8){
+            return convenio.getValor(value);
+        }else{
+            return titulo.getValor(value);
+        }
     },
-
-    formatValor(value) {
-        let valor = parseFloat(value.substring(4));
-        valor = (valor / 100.00).toFixed(2);
-  
-        return String(valor);
+    getVencimento(value){
+        if(parseInt(value[0]) === 8){
+            return convenio.getVencimento(value);
+        }else{
+            return titulo.getVencimento(value);
+        }
     },
-
-    limparLinhaBoleto(value) {
-        return value.replace(/( |\.|-)/g, '');
-    },
+    getCodigoDeBarras(value){
+        if(parseInt(value[0]) === 8){
+            return convenio.getCodigoDeBarras(value);
+        }else{
+            return titulo.getCodigoDeBarras(value);
+        }
+    }
 }
