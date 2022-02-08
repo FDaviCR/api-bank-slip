@@ -28,6 +28,6 @@ module.exports = {
         const codigoBarras = this.getCodigoDeBarras(linhaDigitavel);
         let valor = codigoBarras.substring(9,19);
         
-        return utils.formatValor(valor);;
+        return utils.formatarValor(valor);;
     },
 }
