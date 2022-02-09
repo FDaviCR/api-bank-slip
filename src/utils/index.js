@@ -1,7 +1,11 @@
 module.exports = {
 
     checarDigitos(value) {
-
+        if(!isNaN(value)){
+            return {r: true};
+        }else{
+            return {r: false, e: "Linha digitavel contém caracteres indevidos"};
+        }
     },
 
     formatarValor(value) {

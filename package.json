@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js",
+    "test": "jest"
   },
   "author": "F. Davi Camilo Ribeiro",
   "license": "ISC",
@@ -14,5 +15,9 @@
     "express": "^4.17.2",
     "moment": "^2.29.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  }
 }
