@@ -13,12 +13,19 @@ module.exports = {
     async linhaDigitavel(request, response){
         const linhaDigitavel = request.params.linhaDigitavel;
         
-        const validacao = utils.checarDigitos(linhaDigitavel);
-        const codigoBarras = functions.getCodigoDeBarras(linhaDigitavel);
-        const valor = functions.getValor(linhaDigitavel);
-        const vencimento = functions.getVencimento(linhaDigitavel);
+        // Bloco de regras para validação da linha digitavel
+        const validacao = utils.checarErros(linhaDigitavel);
+        let linhaDigitavelValida = validacao.r;
+        let err = validacao.e;
 
-        if(validacao.r){
+        const ehValido = functions.ehValido(linhaDigitavel, true);
+        
+        if(linhaDigitavelValida){
+            // Chamando funções para verificar os dados 
+            const codigoBarras = functions.getCodigoDeBarras(linhaDigitavel);
+            const valor = functions.getValor(linhaDigitavel);
+            const vencimento = functions.getVencimento(linhaDigitavel);
+            
             response.status(200).send({
                 barCode: codigoBarras,
                 amount: valor,
@@ -26,9 +33,8 @@ module.exports = {
             })
         }else{
             response.status(400).send({
-                error: validacao.e
+                error: err
             })
-        }
-        
+        }      
     }
 };

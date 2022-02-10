@@ -2,6 +2,7 @@ const utils = require('../utils');
 const moment = require('moment');
 
 module.exports = {
+    // Verificação do código de barras do boleto
     getCodigoDeBarras(linhaDigitavel) {
         let codigoBarras = '';
         for (let i = 0; i < 4; i++) {
@@ -11,6 +12,7 @@ module.exports = {
         }
         return codigoBarras;
     },
+    // Verificação do vencimento de barras do boleto
     getVencimento(linhaDigitavel){
         const codigoBarras = this.getCodigoDeBarras(linhaDigitavel);
         const cb = codigoBarras.substring(23, 31);
@@ -20,16 +22,23 @@ module.exports = {
             cb.substring(0, 2)
         ]);
 
-        console.log(cb);
-        console.log(cb.substring(4, 8));
-        console.log(cb.substring(2, 4) - 1);
-        console.log(cb.substring(0, 2));
-
         return formattedDate;
     },
+    // Verificação do valor de barras do boleto
     getValor(linhaDigitavel){
         const codBarras = this.getCodigoDeBarras(linhaDigitavel);
         const valorBoleto = codBarras.substring(4, 15);
         return String(parseFloat(`${valorBoleto.substring(0, 9)}.${valorBoleto.substring(9, 13)}`));
     },
+    // Verificação da validade de barras do boleto
+    ehValido(linhaDigitavel) {
+        if (linhaDigitavel.length !== 48){
+            return false;
+        }
+        const bloco = linhaDigitavel.substring(1, 32);
+        const dv = linhaDigitavel.substring(32, 33);
+        const dvCalculado = utils.modulo11BoletoBancario(bloco);
+        
+        return parseInt(dvCalculado) === parseInt(dv);
+    }
 }

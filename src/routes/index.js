@@ -2,6 +2,7 @@ const { Router } = require('express');
 const BankSlipController = require('../controllers/BankSlipController');
 const routes = Router();
 
+// Rota raíz para testes
 routes.get('/', (request, response) => {
   response.status(200).send({
     title: "Teste EWally",
@@ -9,6 +10,7 @@ routes.get('/', (request, response) => {
   });
 });
 
+// Rota principal para verificação do barras do boleto
 routes.get('/boleto/:linhaDigitavel', BankSlipController.linhaDigitavel);
 
 module.exports = routes;
