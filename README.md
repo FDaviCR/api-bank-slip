@@ -1,4 +1,4 @@
-# Teste Prático EWally
+# Teste Prático
 
 # Para instalação dos pacotes
     npm install
